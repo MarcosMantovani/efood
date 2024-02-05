@@ -1,6 +1,8 @@
+import Header from '../../components/Header'
+
 const Perfil = () => (
   <>
-    <h1>Perfil</h1>
+    <Header />
   </>
 )
 

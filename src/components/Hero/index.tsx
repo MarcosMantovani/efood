@@ -1,10 +1,10 @@
 import logo from '../../assets/images/logo.svg'
-import fundo from '../../assets/images/fundo.png'
+import background from '../../assets/images/hero-background.png'
 
 import { Image, Text } from './styles'
 
 const Hero = () => (
-  <Image style={{ backgroundImage: `url(${fundo})` }}>
+  <Image style={{ backgroundImage: `url(${background})` }}>
     <h1>
       <img src={logo} alt="efood" />
     </h1>
