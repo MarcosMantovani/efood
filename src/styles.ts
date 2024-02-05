@@ -19,7 +19,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${colors.white};
     color: ${colors.red};
-    padding-top: 40px;
   }
 
   .container {
