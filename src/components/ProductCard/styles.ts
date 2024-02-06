@@ -39,4 +39,5 @@ export const CartButton = styled.button`
   color: ${colors.red};
   font-weight: bold;
   font-size: 14px;
+  cursor: pointer;
 `
