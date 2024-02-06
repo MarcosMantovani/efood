@@ -6,6 +6,7 @@ export const HeaderContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
+  align-items: center;
   font-weight: 900;
   font-size: 18px;
   padding-top: 40px;
