@@ -9,5 +9,5 @@ export const ListContainer = styled.div<Omit<Props, 'restaurants'>>`
   grid-template-columns: ${(props) =>
     props.type === 'restaurants' ? '1fr 1fr' : '1fr 1fr 1fr'};
   column-gap: ${(props) => (props.type === 'restaurants' ? '80px' : '32px')};
-  row-gap: 48px;
+  row-gap: ${(props) => (props.type === 'restaurants' ? '48px' : '32px')};
 `

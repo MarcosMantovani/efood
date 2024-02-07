@@ -8,10 +8,7 @@ const Hero = () => (
     <h1>
       <img src={logo} alt="efood" />
     </h1>
-    <Text>
-      Viva experiências gastronômicas <br />
-      no conforto da sua casa
-    </Text>
+    <Text>Viva experiências gastronômicas no conforto da sua casa</Text>
   </Image>
 )
 

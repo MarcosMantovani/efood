@@ -22,6 +22,10 @@ export const BannerContainer = styled.div`
   .container {
     z-index: 1;
     position: relative;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `
 
@@ -29,7 +33,6 @@ export const SecondaryText = styled.p`
   color: ${colors.white2};
   font-weight: 100;
   padding-top: 24px;
-  padding-bottom: 160px;
 `
 
 export const Title = styled.p`
