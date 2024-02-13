@@ -1,24 +1,17 @@
-import { useParams } from 'react-router-dom'
-
 import { Title, SecondaryText, BannerContainer } from './styles'
-import { restaurants } from '../../pages/Home'
 
-const Banner = () => {
-  const { id } = useParams()
+export type Props = {
+  cape: string
+  type: string
+  title: string
+}
 
-  const currentRestaurant = restaurants.find(
-    (restaurant) => restaurant.id.toString() === id
-  )
-
-  const backgroundImage = currentRestaurant?.image
-
-  const lastInfo = currentRestaurant?.infos[currentRestaurant.infos.length - 1]
-
+const Banner = ({ cape, type, title }: Props) => {
   return (
-    <BannerContainer style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <BannerContainer style={{ backgroundImage: `url(${cape})` }}>
       <div className="container">
-        <SecondaryText>{lastInfo}</SecondaryText>
-        <Title>{currentRestaurant?.title}</Title>
+        <SecondaryText>{type}</SecondaryText>
+        <Title>{title}</Title>
       </div>
     </BannerContainer>
   )

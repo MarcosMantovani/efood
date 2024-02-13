@@ -7,6 +7,12 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+
+  > img {
+    width: 100%;
+    height: 216px;
+    object-fit: cover;
+  }
 `
 
 export const Info = styled.div`
@@ -51,9 +57,7 @@ export const Infos = styled.div`
 
   ${TagContainer} {
     font-size: 12px;
-  }
-
-  ${TagContainer} {
     margin-left: 8px;
+    text-transform: capitalize;
   }
 `

@@ -33,6 +33,7 @@ export const SecondaryText = styled.p`
   color: ${colors.white2};
   font-weight: 100;
   padding-top: 24px;
+  text-transform: capitalize;
 `
 
 export const Title = styled.p`

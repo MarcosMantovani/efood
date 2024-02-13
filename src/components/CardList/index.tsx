@@ -1,46 +1,59 @@
-import { useParams } from 'react-router-dom'
-
-import Restaurant from '../../models/Restaurant'
-import ProductCard from '../ProductCard/indes'
-import RestaurantCard from '../RestaurantCard/indes'
+import ProductCard from '../ProductCard'
+import RestaurantCard from '../RestaurantCard'
 import { ListContainer } from './styles'
+import { Restaurant } from '../../pages/Home'
 
 export type Props = {
   type?: 'restaurants' | 'products'
-  restaurants: Restaurant[]
+  restaurants?: Restaurant[]
+  restaurantMenu?: Restaurant
 }
 
-const CardList = ({ type = 'restaurants', restaurants }: Props) => {
-  const { id } = useParams()
+const CardList = ({
+  type = 'restaurants',
+  restaurants,
+  restaurantMenu
+}: Props) => {
+  const getRestaurantTags = (restaurant: Restaurant) => {
+    const infos = []
+
+    if (restaurant.destacado) {
+      infos.push('Destaque da semana')
+    }
+
+    infos.push(restaurant.tipo)
+
+    return infos
+  }
 
   return (
     <ListContainer type={type} className="container">
       {type === 'restaurants' ? (
         <>
-          {restaurants.map((restaurant) => (
+          {restaurants?.map((restaurant) => (
             <RestaurantCard
               key={restaurant.id}
-              title={restaurant.title}
-              rating={restaurant.rating}
-              description={restaurant.description}
-              infos={restaurant.infos}
-              image={restaurant.image}
+              title={restaurant.titulo}
+              rating={restaurant.avaliacao}
+              description={restaurant.descricao}
+              infos={getRestaurantTags(restaurant)}
+              cape={restaurant.capa}
               id={restaurant.id}
             />
           ))}
         </>
       ) : (
         <>
-          {restaurants
-            .find((restaurant) => restaurant.id.toString() === id)
-            ?.products.map((product) => (
-              <ProductCard
-                key={product.id}
-                title={product.title}
-                description={product.description}
-                image={product.image}
-              />
-            ))}
+          {restaurantMenu?.cardapio.map((cardapio) => (
+            <ProductCard
+              key={cardapio.id}
+              title={cardapio.nome}
+              description={cardapio.descricao}
+              photo={cardapio.foto}
+              portion={cardapio.porcao}
+              price={cardapio.preco}
+            />
+          ))}
         </>
       )}
     </ListContainer>
