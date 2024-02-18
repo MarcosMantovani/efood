@@ -52,6 +52,7 @@ const CardList = ({
               photo={cardapio.foto}
               portion={cardapio.porcao}
               price={cardapio.preco}
+              restaurant={restaurantMenu}
             />
           ))}
         </>

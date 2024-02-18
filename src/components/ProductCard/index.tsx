@@ -11,16 +11,29 @@ import {
   ModalContent
 } from './styles'
 
+import { add, open } from '../../store/reducers/cart'
+import { useDispatch } from 'react-redux'
+import { Restaurant } from '../../pages/Home'
+
 type Props = {
   title: string
   description: string
   photo: string
   portion: string
   price: number
+  restaurant: Restaurant
 }
 
-const ProductCard = ({ title, description, photo, portion, price }: Props) => {
+const ProductCard = ({
+  title,
+  description,
+  photo,
+  portion,
+  price,
+  restaurant
+}: Props) => {
   const [modalIsVisible, setModalIsVisible] = useState(false)
+  const dispatch = useDispatch()
 
   const getDescription = (desc: string) => {
     if (desc.length > 180) {
@@ -37,6 +50,11 @@ const ProductCard = ({ title, description, photo, portion, price }: Props) => {
   }
 
   const formatedPrice = formatPrice(price)
+
+  const addToCart = () => {
+    dispatch(add(restaurant))
+    dispatch(open())
+  }
 
   return (
     <>
@@ -69,7 +87,7 @@ const ProductCard = ({ title, description, photo, portion, price }: Props) => {
               <p>Serve: {portion}</p>
             </div>
             <div className="button">
-              <Button onClick={() => setModalIsVisible(false)}>
+              <Button onClick={addToCart}>
                 Adicionar ao carrinho - {formatedPrice}
               </Button>
             </div>

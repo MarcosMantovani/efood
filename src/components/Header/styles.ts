@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
@@ -22,6 +21,7 @@ export const Logo = styled.h1`
   text-align: center;
 `
 
-export const LinkCart = styled.a`
+export const CartButton = styled.a`
   text-align: end;
+  cursor: pointer;
 `
