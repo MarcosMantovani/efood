@@ -11,7 +11,7 @@ import {
   ModalContent
 } from './styles'
 
-import { add, open } from '../../store/reducers/cart'
+import { Menu, add, open } from '../../store/reducers/cart'
 import { useDispatch } from 'react-redux'
 import { Restaurant } from '../../pages/Home'
 
@@ -21,7 +21,14 @@ type Props = {
   photo: string
   portion: string
   price: number
-  restaurant: Restaurant
+  menu: Menu
+}
+
+export const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(price)
 }
 
 const ProductCard = ({
@@ -30,7 +37,7 @@ const ProductCard = ({
   photo,
   portion,
   price,
-  restaurant
+  menu
 }: Props) => {
   const [modalIsVisible, setModalIsVisible] = useState(false)
   const dispatch = useDispatch()
@@ -42,17 +49,10 @@ const ProductCard = ({
     return desc
   }
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-br', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price)
-  }
-
   const formatedPrice = formatPrice(price)
 
   const addToCart = () => {
-    dispatch(add(restaurant))
+    dispatch(add(menu))
     dispatch(open())
   }
 

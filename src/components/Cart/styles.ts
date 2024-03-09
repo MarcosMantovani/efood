@@ -33,6 +33,13 @@ export const Sidebar = styled.aside`
   padding: 32px 8px 0px 8px;
   max-width: 360px;
   width: 100%;
+
+  span.noCartitems {
+    color: ${colors.white};
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+  }
 `
 
 export const Prices = styled.div`
