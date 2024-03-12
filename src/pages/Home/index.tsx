@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
-
 import CardList from '../../components/CardList'
 import Hero from '../../components/Hero'
+import Loader from '../../components/Loader'
 
 import { useGetRestaurantsQuery } from '../../services/api'
 
@@ -28,13 +27,10 @@ export type Restaurant = {
 const Home = () => {
   const { data: restaurants, isLoading } = useGetRestaurantsQuery()
 
-  if (isLoading) {
-    return <h4>Carregando...</h4>
-  }
-
   return (
     <>
       <Hero />
+      {isLoading && <Loader />}
       <CardList type="restaurants" restaurants={restaurants} />
     </>
   )

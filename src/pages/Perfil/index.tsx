@@ -1,25 +1,31 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 
 import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import CardList from '../../components/CardList'
-import { Restaurant } from '../Home'
+import Loader from '../../components/Loader'
+
 import { useGetRestaurantQuery } from '../../services/api'
 
-const Perfil = () => {
-  const { id } = useParams()
-  const { data: menu } = useGetRestaurantQuery(id!)
+type PerfilParams = {
+  id: string
+}
 
-  if (!menu) {
-    return <h3>Carregando...</h3>
-  }
+const Perfil = () => {
+  const { id } = useParams() as PerfilParams
+  const { data: menu } = useGetRestaurantQuery(id)
 
   return (
     <>
       <Header />
-      <Banner title={menu.titulo} type={menu.tipo} cape={menu.capa} />
-      <CardList type="products" restaurantMenu={menu} />
+      {menu ? (
+        <>
+          <Banner title={menu.titulo} type={menu.tipo} cape={menu.capa} />
+          <CardList type="products" restaurantMenu={menu} />
+        </>
+      ) : (
+        <Loader />
+      )}
     </>
   )
 }

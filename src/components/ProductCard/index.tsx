@@ -1,19 +1,11 @@
 import { useState } from 'react'
-import pizza from '../../assets/images/pizza.png'
+import { useDispatch } from 'react-redux'
+
 import close from '../../assets/images/close.svg'
-import {
-  Card,
-  Title,
-  Info,
-  Description,
-  Button,
-  Modal,
-  ModalContent
-} from './styles'
 
 import { Menu, add, open } from '../../store/reducers/cart'
-import { useDispatch } from 'react-redux'
-import { Restaurant } from '../../pages/Home'
+
+import * as S from './styles'
 
 type Props = {
   title: string
@@ -58,16 +50,18 @@ const ProductCard = ({
 
   return (
     <>
-      <Card>
+      <S.Card>
         <img src={photo} alt={title} />
-        <Info>
-          <Title>{title}</Title>
-          <Description>{getDescription(description)}</Description>
-          <Button onClick={() => setModalIsVisible(true)}>Mais detalhes</Button>
-        </Info>
-      </Card>
-      <Modal className={modalIsVisible ? 'visible' : ''}>
-        <ModalContent className="container">
+        <S.Info>
+          <S.Title>{title}</S.Title>
+          <S.Description>{getDescription(description)}</S.Description>
+          <S.Button onClick={() => setModalIsVisible(true)}>
+            Mais detalhes
+          </S.Button>
+        </S.Info>
+      </S.Card>
+      <S.Modal className={modalIsVisible ? 'visible' : ''}>
+        <S.ModalContent className="container">
           <div className="close">
             <img
               src={close}
@@ -87,14 +81,14 @@ const ProductCard = ({
               <p>Serve: {portion}</p>
             </div>
             <div className="button">
-              <Button onClick={addToCart}>
+              <S.Button onClick={addToCart}>
                 Adicionar ao carrinho - {formatedPrice}
-              </Button>
+              </S.Button>
             </div>
           </div>
-        </ModalContent>
+        </S.ModalContent>
         <div className="overlay" onClick={() => setModalIsVisible(false)}></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

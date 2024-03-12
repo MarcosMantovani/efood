@@ -115,8 +115,8 @@ const Cart = () => {
   }
 
   const getTotalPrice = () => {
-    return items.reduce((acumulador, valorAtual) => {
-      return (acumulador += valorAtual.preco!)
+    return items.reduce((acc, amount) => {
+      return (acc += amount.preco)
     }, 0)
   }
 
@@ -167,7 +167,11 @@ const Cart = () => {
                       <button type="button">
                         <img
                           src={dump}
-                          onClick={() => removeItem(item.cartId!)}
+                          onClick={() => {
+                            if (item.cartId) {
+                              removeItem(item.cartId)
+                            }
+                          }}
                         />
                       </button>
                     </S.CartItem>
