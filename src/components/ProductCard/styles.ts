@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
+type ButtonProps = {
+  margintop?: string
+}
+
 export const Card = styled.div`
   padding: 8px;
   max-width: 320px;
@@ -36,7 +40,7 @@ export const Title = styled.h3`
   font-size: 16px;
 `
 
-export const Button = styled.button`
+export const Button = styled.button<ButtonProps>`
   width: 100%;
   padding: 4px 8px;
   background-color: ${colors.beige};
@@ -45,6 +49,7 @@ export const Button = styled.button`
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
+  margin-top: ${(props) => props.margintop || '0'};
 `
 
 export const Modal = styled.div`

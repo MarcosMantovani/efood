@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import close from '../../assets/images/lixeira.png'
+
+type InputGroupProps = {
+  maxwidth?: string
+}
 
 export const Overlay = styled.div`
   position: absolute;
@@ -34,7 +37,7 @@ export const Sidebar = styled.aside`
   max-width: 360px;
   width: 100%;
 
-  span.noCartitems {
+  span.noCartItems {
     color: ${colors.white};
     font-weight: 900;
     display: flex;
@@ -95,4 +98,53 @@ export const CartItem = styled.li`
       height: 100%;
     }
   }
+`
+
+export const Title = styled.h3`
+  color: ${colors.beige};
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 16px;
+`
+
+export const Row = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+`
+
+export const InputGroup = styled.div<InputGroupProps>`
+  flex: auto;
+  max-width: ${(props) => props.maxwidth || 'auto'};
+
+  label {
+    color: ${colors.beige};
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+  }
+
+  input {
+    color: #4b4b4b;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: ${colors.beige};
+    border: 1px solid ${colors.beige};
+    height: 32px;
+    width: 100%;
+    padding: 0 8px;
+    margin: 8px 0;
+
+    &.error {
+      border: 1px solid red;
+      background-color: red;
+    }
+  }
+`
+
+export const FinalText = styled.p`
+  color: ${colors.beige};
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 22px;
 `
