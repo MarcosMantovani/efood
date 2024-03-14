@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import logo from '../../assets/images/logo.svg'
 import background from '../../assets/images/header-background.png'
-import { HeaderContainer, Logo, CartButton } from './styles'
+import * as S from './styles'
 
 import { open } from '../../store/reducers/cart'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,17 +17,30 @@ const Header = () => {
   }
 
   return (
-    <div style={{ backgroundImage: `url(${background})` }}>
-      <HeaderContainer className="container">
-        <Link to="/">Restaurantes</Link>
-        <Logo>
-          <img src={logo} alt="efood" />
-        </Logo>
-        <CartButton onClick={openCart}>
-          {items.length} produto(s) no carrinho
-        </CartButton>
-      </HeaderContainer>
-    </div>
+    <S.Body style={{ backgroundImage: `url(${background})` }}>
+      <div className="standardHeader">
+        <S.HeaderContainer className="container">
+          <Link to="/">Restaurantes</Link>
+          <S.Logo>
+            <img src={logo} alt="efood" />
+          </S.Logo>
+          <S.CartButton onClick={openCart}>
+            {items.length} produto(s) no carrinho
+          </S.CartButton>
+        </S.HeaderContainer>
+      </div>
+      <div className="mobileHeader">
+        <S.HeaderContainer className="container">
+          <S.Logo>
+            <img src={logo} alt="efood" />
+          </S.Logo>
+          <Link to="/">Restaurantes</Link>
+          <S.CartButton onClick={openCart}>
+            {items.length} produto(s) no carrinho
+          </S.CartButton>
+        </S.HeaderContainer>
+      </div>
+    </S.Body>
   )
 }
 

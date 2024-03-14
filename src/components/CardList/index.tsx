@@ -31,15 +31,18 @@ const CardList = ({
       {type === 'restaurants' ? (
         <>
           {restaurants?.map((restaurant) => (
-            <RestaurantCard
-              key={restaurant.id}
-              title={restaurant.titulo}
-              rating={restaurant.avaliacao}
-              description={restaurant.descricao}
-              infos={getRestaurantTags(restaurant)}
-              cape={restaurant.capa}
-              id={restaurant.id}
-            />
+            <ul key={restaurant.id}>
+              <li>
+                <RestaurantCard
+                  title={restaurant.titulo}
+                  rating={restaurant.avaliacao}
+                  description={restaurant.descricao}
+                  infos={getRestaurantTags(restaurant)}
+                  cape={restaurant.capa}
+                  id={restaurant.id}
+                />
+              </li>
+            </ul>
           ))}
         </>
       ) : (

@@ -1,5 +1,20 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
+
+export const Body = styled.div`
+  .mobileHeader {
+    display: none;
+    @media (max-width: ${breakpoints.tablet}) {
+      display: block;
+    }
+  }
+  .standardHeader {
+    display: block;
+    @media (max-width: ${breakpoints.tablet}) {
+      display: none;
+    }
+  }
+`
 
 export const HeaderContainer = styled.div`
   display: grid;
@@ -10,6 +25,11 @@ export const HeaderContainer = styled.div`
   font-size: 18px;
   padding-top: 40px;
   padding-bottom: 64px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+    flex-direction: column;
+  }
 
   a {
     text-decoration: none;

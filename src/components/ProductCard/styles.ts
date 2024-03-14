@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 type ButtonProps = {
   margintop?: string
@@ -13,6 +13,10 @@ export const Card = styled.div`
   background-color: ${colors.red};
   color: ${colors.beige};
 
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 300px;
+  }
+
   > img {
     height: 168px;
     object-fit: cover;
@@ -21,11 +25,10 @@ export const Card = styled.div`
 
 export const Info = styled.div`
   padding-top: 8px;
-`
-
-export const HeaderInfo = styled.div`
-  font-weight: bold;
-  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
 `
 
 export const Description = styled.p`
@@ -88,6 +91,13 @@ export const ModalContent = styled.div`
   z-index: 1;
   color: ${colors.white2};
 
+  @media (max-width: ${breakpoints.desktop}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 8px;
+  }
+
   .modal-image {
     img {
       width: 280px;
@@ -119,6 +129,7 @@ export const ModalContent = styled.div`
   .button {
     padding-top: 16px;
     display: inline-block;
+    display: flex;
   }
 
   .close {

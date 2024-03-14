@@ -53,8 +53,10 @@ const ProductCard = ({
       <S.Card>
         <img src={photo} alt={title} />
         <S.Info>
-          <S.Title>{title}</S.Title>
-          <S.Description>{getDescription(description)}</S.Description>
+          <div>
+            <S.Title>{title}</S.Title>
+            <S.Description>{getDescription(description)}</S.Description>
+          </div>
           <S.Button onClick={() => setModalIsVisible(true)}>
             Mais detalhes
           </S.Button>
